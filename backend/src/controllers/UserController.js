@@ -57,6 +57,11 @@ const getUserById = async (req,res) =>{
 const editUser = async (req,res) =>{
     try {
         const data = req.body;
+
+        if(req.file){
+            data.photo_perfil = req.file.filename;
+        }
+
         const user = await prisma.user.update({
             where:{
                 id: Number(req.params.id)

@@ -11,11 +11,31 @@ datasource db {
 }
 
 model User {
-  id Int @id @default(autoincrement())
-  email String @unique
-  name String
-  password String
+  id           Int      @id @default(autoincrement())
+  email        String   @unique
+  name         String
+  password     String
   photo_perfil String?
-  createdAt DateTime @default(now())
-  updatedAt DateTime @updatedAt
-} 
+  createdAt    DateTime @default(now())
+  updatedAt    DateTime @updatedAt
+  News         News[]
+}
+
+model Category {
+  id   Int    @id @default(autoincrement())
+  type String
+  News News[]
+}
+
+model News {
+  id          Int      @id @default(autoincrement())
+  title       String
+  banner      String
+  text        String   @db.Text
+  createdAt   DateTime @default(now())
+  updatedAt   DateTime @updatedAt
+  user_id     Int
+  user        User     @relation(fields: [user_id], references: [id])
+  category_id Int
+  category    Category @relation(fields: [category_id], references: [id])
+}

@@ -145,6 +145,49 @@ const getCarouselNews = async (req, res) => {
     }
   }
   
+  const searchNewsByTitle = async (req, res) => {
+    try {
+      const { title } = req.query;
+
+      if (!title) {
+        return res.status(400).json("Você deve pesquisar algo!");
+      }      
+
+      const news = await prisma.news.findMany({
+        where: {
+          title: {
+            contains: title,
+          },
+        },
+        select: {
+          id: true,
+          title: true,
+          banner: true,
+          text: true,
+          createdAt: true,
+          user: {
+            select: {
+              name: true,
+            },
+          },
+          category: {
+            select: {
+              type: true,
+            },
+          },
+        },
+      });
+
+      if(news.length === 0){
+        return res.status(404).json("Notícia não encontrada!");
+      }
+
+      return res.json(news);
+    } catch (err) {
+      res.status(400).send({ message: err.message });
+    }
+  };
+  
 
 module.exports = {
     createNews,
@@ -152,5 +195,6 @@ module.exports = {
     editNews,
     removeNews,
     getNewsById,
-    getCarouselNews
+    getCarouselNews,
+    searchNewsByTitle
 }

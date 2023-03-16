@@ -88,10 +88,43 @@ const removeUser = async (req,res) => {
     }
 }
 
+const getNewsByUser = async (req,res) =>{
+    try {
+        const { userId } = req.params;
+    
+        const news = await prisma.news.findMany({
+          where: {
+            user_id: Number(userId),
+          },
+          select: {
+            id: true,
+            title: true,
+            banner: true,
+            text: true,
+            createdAt: true,
+            user: {
+              select: {
+                name: true,
+              },
+            },
+            category:{
+                select:{
+                    type: true
+                }
+            },
+          },
+        });
+        return res.json(news);
+      } catch (err) {
+        res.status(400).send({ message: err.message });
+      }
+}
+
 module.exports = {
     createUser,
     getAllUsers,
     getUserById,
     editUser,
-    removeUser
+    removeUser,
+    getNewsByUser
 }

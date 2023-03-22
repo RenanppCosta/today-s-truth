@@ -5,6 +5,7 @@ const app = express();
 const userRouter = require("./router/UserRouter");
 const newsRouter = require("./router/NewsRouter");
 const categoryRouter = require("./router/CategoryRouter");
+const AuthRouter = require("./router/AuthRouter");
 
 dotenv.config();
 app.use(cors());
@@ -13,6 +14,7 @@ app.use(express.json());
 app.use("/user", userRouter);
 app.use("/news", newsRouter);
 app.use("/category", categoryRouter);
+app.use("/", AuthRouter);
 
 
 app.listen(3000, () => console.log("Servidor Rodando na porta 3000!"));

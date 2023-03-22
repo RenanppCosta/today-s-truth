@@ -4,12 +4,12 @@ const upload = require("../middlewares/MulterMiddleware");
 const { createNews, getAllNews, editNews, removeNews, getNewsById, getCarouselNews, searchNewsByTitle } = require("../controllers/NewsController");
 const { verifyToken } = require("../middlewares/AuthMiddleware");
 
-router.post("/", upload.single("banner") , createNews);
-router.get("/", verifyToken, getAllNews);
+router.post("/", verifyToken, upload.single("banner") , createNews);
+router.get("/", getAllNews);
 router.get("/carousel", getCarouselNews);
-router.get("/search", searchNewsByTitle);
-router.get("/:id", getNewsById);
-router.put("/:id",upload.single("banner"), editNews);
-router.delete("/:id", removeNews);
+router.get("/search", verifyToken, searchNewsByTitle);
+router.get("/:id", verifyToken, getNewsById);
+router.put("/:id", verifyToken, upload.single("banner"), editNews);
+router.delete("/:id", verifyToken, removeNews);
 
 module.exports = router;

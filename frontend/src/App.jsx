@@ -1,12 +1,11 @@
+import Navbar from "./components/Navbar"
 
-
-function App() {
-
+export default function App() {
   return (
-    <div>
-      Oi react
-    </div>
+    <>
+      <Navbar />
+    </>
   )
 }
 
-export default App
+

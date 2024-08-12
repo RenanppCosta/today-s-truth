@@ -2,6 +2,7 @@ import { useState } from "react"
 import logo from "../../assets/logo-todays-truth.png"
 import HamburguerMenu from "../HamburguerMenu"
 
+
 export default function Navbar(){
     const [isDropdownOpen, setIsDropdownOpen] = useState(false);
 

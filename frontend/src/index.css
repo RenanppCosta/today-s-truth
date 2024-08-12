@@ -7,3 +7,31 @@
 *{
     font-family: "Crimson Text";
 }
+
+
+.swiper-button-prev,
+.swiper-button-next {
+    color: #ffffff;
+}
+
+.swiper-button-prev {
+    left: 20px; 
+}
+
+.swiper-button-next {
+    right: 20px; 
+}
+.swiper-pagination{
+    margin-bottom: 20px;
+}
+
+
+.swiper-pagination-bullet {
+    background-color: #cccccc; 
+    opacity: 1; 
+}
+
+.swiper-pagination-bullet-active {
+    background-color: #630101; 
+}
+

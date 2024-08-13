@@ -12,7 +12,7 @@ export default function Navbar(){
 
     return(
         <>
-            <header className="w-full h-24 flex justify-center items-center px-5 border-b shadow-md fixed top-0 z-10">
+            <header className="w-full h-24 flex justify-center items-center px-5 border-b shadow-md fixed top-0 z-10 bg-white">
                 <div className="w-full h-full flex justify-between items-center max-w-7xl">
                     <img src={logo} alt="Logo do Today's Truth" className="h-full cursor-pointer" />
                     <HamburguerMenu />

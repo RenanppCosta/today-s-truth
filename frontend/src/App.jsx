@@ -1,11 +1,9 @@
-import Navbar from "./components/Navbar"
-import Carousel from "./components/Carousel"
+import Home from "./pages/Home"
 
 export default function App() {
   return (
     <>
-      <Navbar />
-      <Carousel />
+      <Home />
     </>
   )
 }

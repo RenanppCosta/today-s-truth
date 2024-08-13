@@ -8,6 +8,10 @@
     font-family: "Crimson Text";
 }
 
+body{
+    background-color: rgb(240, 240, 240);
+}
+
 
 .swiper-button-prev,
 .swiper-button-next {
@@ -34,4 +38,5 @@
 .swiper-pagination-bullet-active {
     background-color: #630101; 
 }
+
 

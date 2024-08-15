@@ -9,7 +9,7 @@ export default function Navbar(){
     const toggleDropdown = () => {
         setIsDropdownOpen(!isDropdownOpen);
     }
-
+    
     return(
         <>
             <header className="w-full h-24 flex justify-center items-center px-5 border-b shadow-md fixed top-0 z-10 bg-white">

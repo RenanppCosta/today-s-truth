@@ -5,6 +5,7 @@ import Card from "../../components/Card";
 import ButtonSeeMore from "../../components/ButtonSeeMore/index.jsx";
 
 import { news } from "../../../data.js"
+import Footer from "../../components/Footer/index.jsx";
 
 export default function Home(){
     const [visibleNewsCount, setVisibleNewsCount] = useState(5);
@@ -26,8 +27,8 @@ export default function Home(){
                     <ButtonSeeMore onClick={handleSeeMore} />
                 )}
             </section>
-            
 
+            <Footer />
 
         </>
         

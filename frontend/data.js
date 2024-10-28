@@ -46,5 +46,13 @@ export const news = [
     date: "9 de Agosto de 2024",
     category: "Negócios",
     text: "Reprehenderit ipsum minima dolorem corporis velit! Lorem ipsum dolor sit amet consectetur adipisicing elit. Animi voluptatum reprehenderit laboriosam temporibus consectetur odio.",
+  },
+  {
+    id: 7,
+    banner: "https://picsum.photos/800/600?random=7", 
+    title: "Notícia Incrível 7",
+    date: "28 de Outubro de 2024",
+    category: "Esportes",
+    text: "Reprehenderit ipsum minima dolorem corporis velit! Lorem ipsum dolor sit amet consectetur adipisicing elit. Animi voluptatum reprehenderit laboriosam temporibus consectetur odio.",
   }
 ];

@@ -1,25 +1,36 @@
 import logo from "../../assets/logo-todays-truth.png"
 
 export default function Footer(){
+
+    const scrollToTop = () => {
+        window.scrollTo({
+          top: 0,
+          behavior: "smooth"
+        });
+    }
+
     return(
         <footer className="bg-slate-950 w-full mt-16 p-5">
-            <div className="flex justify-around items-end">
+            <div className="flex justify-around">
                 <div className="bg-white w-20 md:w-24 rounded-full">
                     <img src={logo} alt="Logo Today's Truth" className="h-full" />
                 </div>
-                <div className="text-white gap-4 flex">
-                    <div>
-                        {/* <a ref="https://www.linkedin.com/in/renan-costa-1a5539235/"><i className="hover:bg-blue-600" class="fa-brands fa-linkedin "></i></a> */}
+                <div className="text-white flex flex-col justify-between items-end text-xs md:text-base">
+                    <div className="flex flex-col items-center cursor-pointer">
+                        <i class="fa-solid fa-arrow-up-long text-lg"></i>
+                        <span onClick={scrollToTop}>Ir ao topo</span>
                     </div>
-                    <a href="#">Página Inicial</a> 
-                    <span>|</span>
-                    <a href="#">Minha Conta</a>
-                    <span>|</span>
-                    <a href="#">Entre em contato</a>
+                    <div className="flex gap-4">
+                        <a href="#">Página Inicial</a> 
+                        <span>|</span>
+                        <a href="#">Minha Conta</a>
+                        <span>|</span>
+                        <a href="#">Entre em contato</a>
+                    </div>
                 </div>
             </div>
             <hr className="my-4"/>
-            <div className="text-white text-center">© 2024 Today's Truth - Desenvolvido por <a href="https://github.com/RenanppCosta">Renan Costa</a></div>
+            <div className="text-white text-center text-xs md:text-base">© 2024 Today's Truth - Desenvolvido por <a href="https://github.com/RenanppCosta">Renan Costa</a></div>
         </footer>
     )
 }

@@ -16,8 +16,8 @@ export default function Footer(){
                     <img src={logo} alt="Logo Today's Truth" className="h-full" />
                 </div>
                 <div className="text-white flex flex-col justify-between items-end text-xs md:text-base">
-                    <div className="flex flex-col items-center cursor-pointer">
-                        <i class="fa-solid fa-arrow-up-long text-lg" onClick={scrollToTop}></i>
+                    <div className="flex flex-col items-center cursor-pointer" onClick={scrollToTop}>
+                        <i class="fa-solid fa-arrow-up-long text-lg"></i>
                         <span>Ir ao topo</span>
                     </div>
                     <div className="flex gap-4">

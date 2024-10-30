@@ -20,7 +20,7 @@ export default function Footer(){
                         <i class="fa-solid fa-arrow-up-long text-lg"></i>
                         <span>Ir ao topo</span>
                     </div>
-                    <div className="flex gap-4">
+                    <div className="flex gap-1 md:gap-4">
                         <a href="#">Página Inicial</a> 
                         <span>|</span>
                         <a href="#">Minha Conta</a>

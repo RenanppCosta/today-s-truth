@@ -2,6 +2,7 @@ import { useLayoutEffect, useRef } from "react";
 import { gsap } from "gsap";
 import "../Card/card.css"
 import { ScrollTrigger } from "gsap/ScrollTrigger";
+import { TextLimit } from "../TextLimit";
 
 export default function Card({ news }) {
     const cardRef = useRef();
@@ -45,7 +46,7 @@ export default function Card({ news }) {
                         {news.date} | {news.category}
                     </span>
                     <p className="text-sm text-slate-600 md:text-lg md:mt-2">
-                        {news.text}
+                        <TextLimit text={news.text} limit={window.innerWidth <= 768 ? 150 : 200} />
                     </p>
                 </div>
             </article>

@@ -4,49 +4,49 @@ import { getWeatherData } from "../../services/weatherService";
 export default function WeatherSection(){
     const [weatherData, setWeatherData] = useState([]);
 
-    useEffect(()=> {
-        const fetchWeatherData = async ()=>{
-            try {
-                const mockedWeatherData = [
-                    { city: "Curitiba", temp: 20, icon: "10d" },
-                    { city: "São Paulo", temp: 23, icon: "10d" },
-                    { city: "Rio de Janeiro", temp: 30, icon: "01d" },
-                    { city: "Brasília", temp: 28, icon: "01d"}
-                ];
-                
-                const storedWeatherData = localStorage.getItem("weatherData");
-        
-                if (!storedWeatherData) {
-                    localStorage.setItem("weatherData", JSON.stringify(mockedWeatherData));
-                    setWeatherData(mockedWeatherData);
-                } else {
-                    setWeatherData(JSON.parse(storedWeatherData));
-                }
-
-                const data = await getWeatherData();
-
-                const weatherInfo = data.map(res => ({
-                    icon: res.data.weather[0].icon,
-                    temp: res.data.main.temp,
-                    city: res.data.name,
-                }));
-
-                setWeatherData(weatherInfo);
-
-                localStorage.setItem("weatherData", JSON.stringify(weatherInfo));
-            } catch (error) {
-                console.log(error.message);
-                const storedWeatherData = localStorage.getItem("weatherData");
-                
-                if (storedWeatherData) {
-                    setWeatherData(JSON.parse(storedWeatherData));
-                } else {
-                    console.log("Não há dados de clima salvos no LocalStorage");
-                }
+    const fetchWeatherData = async ()=>{
+        try {
+            const mockedWeatherData = [
+                { city: "Curitiba", temp: 20, icon: "10d" },
+                { city: "São Paulo", temp: 23, icon: "10d" },
+                { city: "Rio de Janeiro", temp: 30, icon: "01d" },
+                { city: "Brasília", temp: 28, icon: "01d"}
+            ];
+            
+            const storedWeatherData = localStorage.getItem("weatherData");
+    
+            if (!storedWeatherData) {
+                localStorage.setItem("weatherData", JSON.stringify(mockedWeatherData));
+                setWeatherData(mockedWeatherData);
+            } else {
+                setWeatherData(JSON.parse(storedWeatherData));
             }
-           
-        }
 
+            const data = await getWeatherData();
+
+            const weatherInfo = data.map(res => ({
+                icon: res.data.weather[0].icon,
+                temp: res.data.main.temp,
+                city: res.data.name,
+            }));
+
+            setWeatherData(weatherInfo);
+
+            localStorage.setItem("weatherData", JSON.stringify(weatherInfo));
+        } catch (error) {
+            console.log(error.message);
+            const storedWeatherData = localStorage.getItem("weatherData");
+            
+            if (storedWeatherData) {
+                setWeatherData(JSON.parse(storedWeatherData));
+            } else {
+                console.log("Não há dados de clima salvos no LocalStorage");
+            }
+        }
+       
+    }
+
+    useEffect(()=> {
         fetchWeatherData();
     },[])
    

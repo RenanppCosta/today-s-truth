@@ -8,6 +8,7 @@
 * <b>Responsividade</b>: Projeto responsivo para qualquer tipo de tela.
 * <b>Usuário</b>: CRUD de usuários além de necessidade de Login.
 * <b>Visualização das Notícias</b>: Visualização de cada notícia dos usuário, tanto em uma timeline tanto por perfil do usuário(onde haverá necessidade de estar logado).
+* <b>Visualização do Clima em Capitais Brasileiras</b>: Visualização do Clima de algumas capitais brasileiras utilizando a API Open Weather Map.
 * <b>Carrosel de Notícias</b>: Carrosel na home com as ultimas notícias postadas.
 * <b>Animação com Scroll</b>: Animação utilizando o GSAP para visualização dos cards das notícias na home.
 

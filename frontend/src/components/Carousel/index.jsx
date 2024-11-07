@@ -5,15 +5,29 @@ import "swiper/css";
 import "swiper/css/navigation"; 
 import "swiper/css/pagination"; 
 import { TextLimit } from "../TextLimit";
+import { useEffect, useState } from "react";
+import { getCarouselNews } from "../../services/news.Service";
 
-const data = [
-    {id: "1", title: "Renan Costa é contratado pelo Vasco da Gama", text: "Jogador de 21 anos, se destaca em peladas pelo seu bairro na vila da penha e chama atenção de time Carioca", banner: "https://images.unsplash.com/photo-1551963831-b3b1ca40c98e?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=MnwzNjUyOXwwfDF8c2VhcmNofDF8fHBob3RvfGVufDB8fHx8MTYzMjczNzE1Mg&ixlib=rb-1.2.1&q=80&w=1080"},
-    {id: "2", title: "Pistache é o novo queridinho da população", text: "Presente em vários segmentos de comida diferentes, como Sorvete e Confeitaria, Pistache vira febre na população brasileira.", banner: "https://picsum.photos/600/900"},
-    {id: "3", title: "Renan Costa é contratado pelo Vasco da Gama", text: "Jogador de 21 anos, se destaca em peladas pelo seu bairro na vila da penha e chama atenção de time Carioca", banner: "https://picsum.photos/200/300"},
+// const data = [
+//     {id: "1", title: "Renan Costa é contratado pelo Vasco da Gama", text: "Jogador de 21 anos, se destaca em peladas pelo seu bairro na vila da penha e chama atenção de time Carioca", banner: "https://images.unsplash.com/photo-1551963831-b3b1ca40c98e?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=MnwzNjUyOXwwfDF8c2VhcmNofDF8fHBob3RvfGVufDB8fHx8MTYzMjczNzE1Mg&ixlib=rb-1.2.1&q=80&w=1080"},
+//     {id: "2", title: "Pistache é o novo queridinho da população", text: "Presente em vários segmentos de comida diferentes, como Sorvete e Confeitaria, Pistache vira febre na população brasileira.", banner: "https://picsum.photos/600/900"},
+//     {id: "3", title: "Renan Costa é contratado pelo Vasco da Gama", text: "Jogador de 21 anos, se destaca em peladas pelo seu bairro na vila da penha e chama atenção de time Carioca", banner: "https://picsum.photos/200/300"},
     
-]
+// ]
 
 export default function Carousel(){
+    const [news, setNews] = useState([]);
+
+    const fetchCarouselNews = async () =>{
+        const response = await getCarouselNews();
+        setNews(response.data);
+        
+    }
+    console.log(news)
+    useEffect(()=>{
+        fetchCarouselNews();
+    },[])
+
     return(
         <section className="mt-32">
              <Swiper
@@ -27,7 +41,7 @@ export default function Carousel(){
                 navigation={true}
                 className="w-full h-[500px] max-w-7xl"
         >
-            {data.map((item) => (
+            {news.map((item) => (
                 <SwiperSlide key={item.id} className="flex text-start p-4">
                     <div style={{ backgroundImage: `url(${item.banner})` }} 
                     className="bg-cover bg-center p-14 flex flex-col justify-center w-full md:justify-end"

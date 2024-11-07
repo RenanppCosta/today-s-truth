@@ -7,9 +7,9 @@ const createNews = async (req, res) => {
       const data = {
         title,
         text,
-        user: { connect: { id: user } },
-        category: { connect: { id: category } },
-        banner: req.file ? req.file.filename : "../img/banner_padrao.png",
+        user: { connect: { id: parseInt(user) } },
+        category: { connect: { id: parseInt(category) } },
+        banner:  req.file ? `http://localhost:3000/uploads/${req.file.filename}`  : "../img/banner_padrao.png",
       };
 
       await newsValidation.validate(data);

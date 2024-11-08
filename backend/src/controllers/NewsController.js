@@ -26,6 +26,9 @@ const getAllNews = async (req,res) =>{
     try {
         const news = await prisma.news.findMany({
           skip: 3,
+          orderBy:{
+            createdAt: "desc"
+          },
           select: {
             id: true,
             title: true,

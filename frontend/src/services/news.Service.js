@@ -6,3 +6,8 @@ export async function getCarouselNews(){
     const response = await axios.get(`${baseUrl}/carousel`);
     return response;
 }
+
+export async function getAllNews(){
+    const response = await axios.get(`${baseUrl}`);
+    return response;
+}

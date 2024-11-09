@@ -1,10 +1,7 @@
 import { useState, useEffect } from "react";
-import Navbar from "../../components/Navbar";
 import Carousel from "../../components/Carousel";
 import Card from "../../components/Card";
 import ButtonSeeMore from "../../components/ButtonSeeMore/index.jsx";
-
-import Footer from "../../components/Footer/index.jsx";
 import WeatherSection from "../../components/WeatherSection/index.jsx";
 import { getAllNews } from "../../services/news.Service";
 
@@ -28,7 +25,6 @@ export default function Home(){
 
     return(
         <>
-            <Navbar />
             <Carousel />
             <h3 className="text-3xl text-slate-950 mt-24 text-center">Todas as Notícias</h3>
             <section className="flex flex-col items-center">
@@ -40,9 +36,6 @@ export default function Home(){
                 )}
             </section>
             <WeatherSection />
-            <Footer />
-
-        </>
-        
+        </> 
     )
 }

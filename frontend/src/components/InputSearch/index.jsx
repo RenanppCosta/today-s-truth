@@ -8,7 +8,7 @@ const searchSchema = z.object({
     title: z.string().nonempty({message: "A pesquisa não pode ser vazia"}).refine(value => !/^\s*$/.test(value), {message: "A pesquisa não pode ser vazia"})
 })
 
-export default function InputSearch({ classInput, classForm, classError }){
+export default function InputSearch({ classInput, classForm, classError, closeMenu }){
     const { register, handleSubmit, reset, formState: {errors} } = useForm({
         resolver: zodResolver(searchSchema)
     });
@@ -17,8 +17,8 @@ export default function InputSearch({ classInput, classForm, classError }){
     const onSearch = (data) => {
         const { title } = data;
         navigate(`/search/${title}`);
+        closeMenu()
         reset();
-        closeMenu();
     }
 
     const navigate = useNavigate();

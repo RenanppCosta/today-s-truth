@@ -38,6 +38,7 @@ export default function HamburguerMenu(){
                             classForm="bg-white rounded-lg shadow-lg p-2 flex items-center justify-center border"
                             classInput="outline-none w-full sm:focus:w-[400px] duration-500"
                             classError="text-red-500 mt-2 text-sm font-bold"
+                            closeMenu={closeMenu}
                         />
                     </div>
                     

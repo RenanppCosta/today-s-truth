@@ -1,29 +1,11 @@
 import { useState } from "react"
-import { useForm } from "react-hook-form"
 import CategoryDropdown from "../CategoryDropdown";
-import { useNavigate, Link } from "react-router-dom";
-import { z } from "zod";
-import { zodResolver } from "@hookform/resolvers/zod"
+import { Link } from "react-router-dom";
+import InputSearch from "../InputSearch";
 
-const searchSchema = z.object({
-    title: z.string().nonempty({message: "A pesquisa não pode ser vazia"}).refine(value => !/^\s*$/.test(value), {message: "A pesquisa não pode ser vazia"})
-})
 
 export default function HamburguerMenu(){
-    const { register, handleSubmit, reset, formState: {errors} } = useForm({
-        resolver: zodResolver(searchSchema)
-    });
-
-    const navigate = useNavigate();
-    
     const [isOpen, setIsOpen] = useState(false);
-
-    const onSearch = (data) => {
-        const { title } = data;
-        navigate(`/search/${title}`);
-        reset();
-        closeMenu();
-    }
 
     const showMenu = ()=>{
         setIsOpen(true);
@@ -52,12 +34,11 @@ export default function HamburguerMenu(){
                         <a href="#" className="text-slate-950 hover:text-slate-600 hover:scale-110 duration-300">Meu Perfil</a>
                         <CategoryDropdown />
                         <a href="#" className="text-slate-950 hover:text-slate-600 hover:scale-110 duration-300">Entre em contato</a>
-                        <form className="bg-white rounded-lg shadow-lg p-2 flex items-center justify-center border" onSubmit={handleSubmit(onSearch)} action="">
-                            <input {...register("title")} type="text" className="outline-none w-full sm:focus:w-[400px] duration-500" placeholder="Pesquisar Notícia"/>
-                            <i className="fa fa-magnifying-glass"></i>
-                        </form>
-
-                        {errors.title && <span className="text-red-500 mt-2 text-sm font-bold">{errors.title.message} </span>}
+                        <InputSearch 
+                            classForm="bg-white rounded-lg shadow-lg p-2 flex items-center justify-center border"
+                            classInput="outline-none w-full sm:focus:w-[400px] duration-500"
+                            classError="text-red-500 mt-2 text-sm font-bold"
+                        />
                     </div>
                     
                 </nav>

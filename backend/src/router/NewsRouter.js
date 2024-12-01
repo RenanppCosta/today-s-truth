@@ -7,7 +7,7 @@ const { verifyToken } = require("../middlewares/AuthMiddleware");
 router.post("/", verifyToken, upload.single("banner") , createNews);
 router.get("/", getAllNews);
 router.get("/carousel", getCarouselNews);
-router.get("/search", verifyToken, searchNewsByTitle);
+router.get("/search", searchNewsByTitle);
 router.get("/:id", verifyToken, getNewsById);
 router.put("/:id", verifyToken, upload.single("banner"), editNews);
 router.delete("/:id", verifyToken, removeNews);

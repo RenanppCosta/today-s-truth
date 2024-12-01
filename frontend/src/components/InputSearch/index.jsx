@@ -17,7 +17,7 @@ export default function InputSearch({ classInput, classForm, classError, closeMe
     const onSearch = (data) => {
         const { title } = data;
         navigate(`/search/${title}`);
-        closeMenu()
+        if(closeMenu)closeMenu()
         reset();
     }
 

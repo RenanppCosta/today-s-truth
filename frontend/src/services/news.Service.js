@@ -11,3 +11,8 @@ export async function getAllNews(){
     const response = await axios.get(`${baseUrl}`);
     return response;
 }
+
+export async function searchNews(title){
+    const response = await axios.get(`${baseUrl}/search?title=${title}`);
+    return response;
+}

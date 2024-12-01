@@ -30,8 +30,10 @@ export function Search(){
 
     return(
         <>
-            <h1 className="text-3xl text-slate-950 mt-32 text-center">Notícias Encontradas = {news.length}</h1>
-
+            <div className="mt-32 bg-white container mx-auto p-6 w-[90%]">
+                <span className="text-xl">Encontramos {news.length} resultados para: </span>
+                <h1 className="text-2xl font-bold">{title}</h1>
+            </div>
             {news.slice(0, visibleNewsCount).map((item) => (
                 <Card 
                     key={item.id} 

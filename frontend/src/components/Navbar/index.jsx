@@ -12,6 +12,7 @@ export default function Navbar(){
         setIsDropdownOpen(!isDropdownOpen);
     }
     
+    
     return(
         <>
             <header className="w-full h-24 flex justify-center items-center px-5 border-b shadow-md fixed top-0 z-10 bg-white">
@@ -22,8 +23,8 @@ export default function Navbar(){
                     
                     <HamburguerMenu />
                     <nav className="hidden lg:flex gap-8">
-                        <a href="#" className="text-slate-950 text-lg hover:text-slate-600 hover:scale-110 duration-300">Página Inicial</a>
-                        <a href="#" className="text-slate-950 text-lg hover:text-slate-600 hover:scale-110 duration-300">Meu Perfil</a>
+                        <a href="/" className="text-slate-950 text-lg hover:text-slate-600 hover:scale-110 duration-300">Página Inicial</a>
+                        <a href="/auth" className="text-slate-950 text-lg hover:text-slate-600 hover:scale-110 duration-300">Login</a>
                         <div className="relative" 
                             onMouseEnter={toggleDropdown} 
                             onMouseLeave={toggleDropdown}

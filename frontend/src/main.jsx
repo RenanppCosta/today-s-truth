@@ -7,6 +7,7 @@ import Home from './pages/Home';
 import ErrorPage from './pages/ErrorPage';
 
 import './index.css'
+import Authentication from './pages/Authentication';
 
 
 const router = createBrowserRouter([
@@ -24,6 +25,10 @@ const router = createBrowserRouter([
         element: <Search />
       }
     ]
+  },
+  {
+    path: "/auth",
+    element: <Authentication />
   }
 ])
 

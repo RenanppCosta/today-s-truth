@@ -1,13 +1,8 @@
 import { useNavigate } from "react-router-dom";
 import { useForm } from "react-hook-form"
-import { z } from "zod";
 import { zodResolver } from "@hookform/resolvers/zod"
 import { useState, useEffect } from "react";
-
-
-const searchSchema = z.object({
-    title: z.string().nonempty({message: "A pesquisa não pode ser vazia"}).refine(value => !/^\s*$/.test(value), {message: "A pesquisa não pode ser vazia"})
-})
+import { searchSchema } from "../../schemas/searchSchema";
 
 export default function InputSearch({ classInput, classForm, classError, closeMenu }){
     const { register, handleSubmit, reset, formState: {errors} } = useForm({

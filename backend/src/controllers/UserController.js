@@ -1,6 +1,7 @@
 const { prisma } = require("../prisma");
 const { userValidation } = require("../validations/UserValidation");
 const bcrypt = require("bcrypt");
+const jwt = require("jsonwebtoken");
 
 const createUser = async (req, res) =>{
     const data = req.body;
@@ -11,7 +12,13 @@ const createUser = async (req, res) =>{
             data
         });
 
-        return res.send(user);
+         const token = jwt.sign({
+                id: user.id,
+                name: user.name,
+                email: user.email
+            }, process.env.JWT_SECRET,{expiresIn: "24h"});
+
+        return res.send({user, token});
     } catch (err) {
         res.status(400).send({message: err.message});
     }

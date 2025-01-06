@@ -1,6 +1,5 @@
 import { useState } from "react"
 import CategoryDropdown from "../CategoryDropdown";
-import { Link } from "react-router-dom";
 import InputSearch from "../InputSearch";
 
 
@@ -30,8 +29,8 @@ export default function HamburguerMenu(){
                     onClick={closeMenu}
                     ></i>
                     <div className="bg-slate-100 w-[90%] rounded-xl flex flex-col items-start p-6 font-bold gap-4">
-                        <a href="#" className="text-slate-950 hover:text-slate-600 hover:scale-110 duration-300">Página Inicial</a>
-                        <a href="#" className="text-slate-950 hover:text-slate-600 hover:scale-110 duration-300">Meu Perfil</a>
+                        <a href="/" className="text-slate-950 hover:text-slate-600 hover:scale-110 duration-300">Página Inicial</a>
+                        <a href="/auth" className="text-slate-950 hover:text-slate-600 hover:scale-110 duration-300">Login</a>
                         <CategoryDropdown />
                         <a href="#" className="text-slate-950 hover:text-slate-600 hover:scale-110 duration-300">Entre em contato</a>
                         <InputSearch 

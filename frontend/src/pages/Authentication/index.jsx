@@ -4,6 +4,9 @@ import { useForm } from "react-hook-form";
 import { zodResolver } from "@hookform/resolvers/zod";
 import { signInSchema } from "../../schemas/signInSchema";
 import { signUpSchema } from "../../schemas/signUpSchema";
+import { signIn, signUp } from "../../services/userService";
+import Cookies  from "js-cookie";
+import { useNavigate } from "react-router-dom";
 
 export default function Authentication() {
   const [activeTab, setActiveTab] = useState("login");
@@ -11,13 +14,31 @@ export default function Authentication() {
   const { register: registerSignUp, handleSubmit: handleSubmitSignUp, formState: { errors: errorSignUp } } = useForm({resolver: zodResolver(signUpSchema)});
   const { register: registerSignIn, handleSubmit: handleSubmitSignIn, formState: { errors: errorSignIn } } = useForm({resolver: zodResolver(signInSchema)});
 
-  const inHandleSubmit = (data) => {
-    console.log(data);
+  const inHandleSubmit = async (data) => {
+    try {
+        const response = await signIn(data);
+        Cookies.set("token", response.data, {expires: 1});
+        navigate("/");
+        console.log(response);
+    } catch (error) {
+        console.log(error);
+    }
   };
 
-  const upHandleSubmit = (data) => {
-    console.log(data);
+  const navigate = useNavigate();
+
+  const upHandleSubmit = async (data) => {
+    try {
+        const response = await signUp(data);
+        Cookies.set("token", response.data.token, {expires: 1});
+        navigate("/");
+        console.log(response);
+    } catch (error) {
+        console.log(error);
+    }
   };
+
+  
 
   return (
     <>

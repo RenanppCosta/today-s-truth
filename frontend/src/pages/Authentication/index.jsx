@@ -10,6 +10,7 @@ import { useNavigate } from "react-router-dom";
 
 export default function Authentication() {
   const [activeTab, setActiveTab] = useState("login");
+  const [loginError, setLoginError] = useState("");
 
   const { register: registerSignUp, handleSubmit: handleSubmitSignUp, formState: { errors: errorSignUp } } = useForm({resolver: zodResolver(signUpSchema)});
   const { register: registerSignIn, handleSubmit: handleSubmitSignIn, formState: { errors: errorSignIn } } = useForm({resolver: zodResolver(signInSchema)});
@@ -22,6 +23,7 @@ export default function Authentication() {
         console.log(response);
     } catch (error) {
         console.log(error);
+        setLoginError("Credenciais inválidas. Verifique seu email e senha.");
     }
   };
 
@@ -87,6 +89,7 @@ export default function Authentication() {
                   />
                   { errorSignIn.password && <span className="text-red-500 mt-2 text-sm font-bold">{errorSignIn.password.message} </span>}
                 </div>
+                {loginError &&  <div className="text-red-500 text-sm font-bold">{loginError}</div>}
                 <button type="submit" className="w-full bg-gray-900 text-white py-2 px-4 rounded-md hover:bg-gray-800 transition-colors">
                   Entrar
                 </button>
